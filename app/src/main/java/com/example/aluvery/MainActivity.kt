@@ -4,16 +4,16 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.aluvery.ui.theme.AluveryTheme
 
 class MainActivity : ComponentActivity() {
@@ -80,19 +80,36 @@ fun BoxPreview() {
 @Preview(showBackground = true)
 @Composable
 fun CustomLayout() {
-    Column {
+    Column(modifier = Modifier
+        .background(Color.LightGray)
+        .padding(5.dp)
+        .fillMaxHeight()
+        .fillMaxWidth()) {
         Text(text = "1ª linha")
         Text(text = "2ª linha")
-        Row {
+        Row(modifier = Modifier
+            .background(Color.Magenta)
+            .padding(5.dp, 10.dp)
+            .fillMaxWidth(0.65f)) {
             Text(text = "3ª linha")
             Text(text = "4ª linha")
         }
-        Box {
-            Row {
+        Box(modifier = Modifier
+            .background(Color.Green)
+            .padding(20.dp)
+            .width(150.dp)
+            .height(100.dp)) {
+            Row(modifier = Modifier
+                .background(Color.Blue)
+                .padding(3.dp)
+                .fillMaxWidth()) {
                 Text(text = "5ª linha")
                 Text(text = "6ª linha")
             }
-            Column {
+            Column(modifier = Modifier
+                .background(Color.Yellow)
+                .padding(5.dp)
+                .fillMaxHeight(0.5f)) {
                 Text(text = "7ª linha")
                 Text(text = "8ª linha")
             }
