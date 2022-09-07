@@ -29,6 +29,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun FirstComposable() {
     Text(text = "O primeiro hahaha")
+    Text(text = "155555555555555555")
 }
 @Preview(
     showBackground = true,
