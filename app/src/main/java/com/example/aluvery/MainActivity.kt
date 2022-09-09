@@ -31,14 +31,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             AluveryTheme {
                 Surface {
-                    ProductItem()
+                    ProductsSection()
                 }
             }
         }
     }
 }
 
-@Preview(showBackground = true)
 @Composable
 fun ProductItem() {
     Surface(
@@ -92,4 +91,28 @@ fun ProductItem() {
             }
         }
     }
+}
+
+@Composable
+fun ProductsSection() {
+    Column {
+        Text(text = "Promoções")
+        Row {
+           ProductItem()
+           ProductItem()
+           ProductItem()
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ProductsSectionPreview() {
+    ProductsSection()
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ProductItePreview() {
+    ProductItem()
 }
