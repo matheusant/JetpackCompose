@@ -1,8 +1,6 @@
 package com.example.aluvery.ui.components
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,6 +20,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.aluvery.R
 import com.example.aluvery.ui.theme.Purple200
 import com.example.aluvery.ui.theme.Purple500
@@ -56,7 +55,7 @@ fun ChallengeComposableOne() {
     }
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun ChallengeComposableTwo() {
     Surface(
@@ -105,6 +104,78 @@ fun ChallengeComposableTwo() {
                     overflow = TextOverflow.Ellipsis,
                     textAlign = TextAlign.Justify
                 )
+            }
+        }
+    }
+}
+
+@Preview
+@Composable
+fun ChallengeComposableThree(description: String = "") {
+    Surface(
+        shape = RoundedCornerShape(15.dp),
+        elevation = 5.dp
+    ) {
+        Column(
+            Modifier
+                .width(200.dp)
+                .heightIn(250.dp, 260.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
+            val imageSize = 100.dp
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(imageSize)
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                Color.Red, Color.White, Color.Black
+                            )
+                        )
+                    )
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_launcher_background),
+                    contentDescription = null,
+                    Modifier
+                        .size(imageSize)
+                        .offset(y = imageSize / 2)
+                        .align(Alignment.BottomCenter)
+                        .clip(CircleShape)
+                )
+            }
+            Spacer(modifier = Modifier.height(imageSize / 2))
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text(
+                    text = LoremIpsum(50).values.first(),
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight(700),
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    text = "R$ 14,99",
+                    Modifier.padding(top = 8.dp),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight(400)
+                )
+            }
+            if (description.isNotBlank()) {
+                Column(
+                    Modifier
+                        .background(Purple200)
+                        .padding(top = 16.dp)
+                ) {
+                    Text(
+                        text = description,
+                        Modifier.padding(
+                            start = 16.dp,
+                            end = 16.dp,
+                            bottom = 16.dp,
+                        )
+                    )
+                }
             }
         }
     }

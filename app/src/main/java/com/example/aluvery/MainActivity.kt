@@ -5,7 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
@@ -109,16 +113,17 @@ fun ProductsSection() {
         Row(
             Modifier
                 .padding(
-                    start = 16.dp,
                     bottom = 16.dp,
-                    end = 16.dp
                 )
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .horizontalScroll(rememberScrollState()),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            Spacer(Modifier)
             ProductItem()
             ProductItem()
             ProductItem()
+            Spacer(Modifier)
         }
     }
 }
