@@ -43,7 +43,7 @@ fun ProductItem() {
     Surface(
         shape = RoundedCornerShape(15.dp),
         elevation = 5.dp
-    ){
+    ) {
         Column(
             Modifier
                 .width(200.dp)
@@ -102,7 +102,9 @@ fun ProductsSection() {
                 top = 16.dp,
                 bottom = 8.dp,
                 end = 16.dp
-            )
+            ),
+            fontSize = 20.sp,
+            fontWeight = FontWeight(400)
         )
         Row(
             Modifier
@@ -114,9 +116,9 @@ fun ProductsSection() {
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-           ProductItem()
-           ProductItem()
-           ProductItem()
+            ProductItem()
+            ProductItem()
+            ProductItem()
         }
     }
 }
