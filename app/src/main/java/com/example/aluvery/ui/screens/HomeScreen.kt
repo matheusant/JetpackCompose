@@ -10,10 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.aluvery.model.Products
+import com.example.aluvery.sampleDataDrinks
+import com.example.aluvery.sampleDataProducts
 import com.example.aluvery.ui.components.ProductsSection
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(products: List<Products>) {
     Column(
         Modifier
             .fillMaxSize()
@@ -21,9 +24,9 @@ fun HomeScreen() {
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Spacer(Modifier)
-        ProductsSection()
-        ProductsSection()
-        ProductsSection()
+        products.forEach {
+            ProductsSection(title = it.title, products = it.products)
+        }
         Spacer(Modifier)
     }
 }
@@ -31,5 +34,5 @@ fun HomeScreen() {
 @Preview(showSystemUi = true)
 @Composable
 private fun HomeScreenPreview() {
-    HomeScreen()
+    HomeScreen(listOf(Products("Doces", sampleDataProducts), Products("Bebidas", sampleDataDrinks)))
 }
